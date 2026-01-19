@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration | Premium Access</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2997/2997321.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <div class="app-container">
+        <header>
+            <h2>Join Premium Courses</h2>
+            <p class="subtitle">Unlock your potential with expert-led courses</p>
+        </header>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="full_name">Full Name</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="full_name" placeholder="John Doe" autocomplete="name" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Work Email</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="name@example.com" autocomplete="email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="program">Current Program / Major</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-university"></i>
+                    <input type="text" id="program" placeholder="e.g. Computer Science" required>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 15px;">
+                <div class="form-group" style="flex: 1;">
+                    <label for="date_field">Date of Birth</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" id="date_field" required style="padding-right: 1rem;">
+                    </div>
+                </div>
+
+                <div class="form-group" style="flex: 1;">
+                    <label for="age">Age</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-sort-numeric-up"></i>
+                        <input type="number" id="age" placeholder="20" min="10" max="100" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Select Your Path</label>
+                <div class="input-wrapper select-wrapper">
+                    <i class="fas fa-graduation-cap"></i>
+                    <select id="course" required>
+                        <option value="" disabled selected>Select a Specialization</option>
+                        <option value="Data Analysis">Data Analysis & Visualization</option>
+                        <option value="AI & Machine Learning">AI & Machine Learning Mastery</option>
+                        <option value="Web Development">Full-Stack Web Development</option>
+                        <option value="Digital Marketing">Advanced Digital Marketing</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Why did you choose this course?</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-question-circle" style="top: 20px; align-self: flex-start;"></i>
+                    <textarea id="reason" rows="3" placeholder="Tell us your motivation..." required
+                        style="width: 100%; padding: 1rem 1rem 1rem 3rem; background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 12px; color: #fff; font-size: 0.95rem; resize: none;"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="benefits">How will this help you?</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lightbulb" style="top: 20px; align-self: flex-start;"></i>
+                    <textarea id="benefits" rows="3" placeholder="Career goals, skills..." required
+                        style="width: 100%; padding: 1rem 1rem 1rem 3rem; background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 12px; color: #fff; font-size: 0.95rem; resize: none;"></textarea>
+                </div>
+            </div>
+
+            <button type="button" id="submitBtn" class="btn-submit">
+                <span>Register Now</span>
+                <i class="fas fa-arrow-right"></i>
+                <div class="spinner"></div>
+            </button>
+        </form>
+
+        <div id="result" class="status-message"></div>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed', err));
+            });
+        }
+    </script>
+    <script src="assets/js/register.js"></script>
+</body>
+
+</html>
